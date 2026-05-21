@@ -239,9 +239,9 @@ if uploaded_files:
                 if d['t2']:
                     ax_v.axvline(x=d['t2'], color=line.get_color(), linestyle='-.', alpha=0.5)
                     
-            ax_v.set_xlabel('时间 (s)', fontsize=11)
-            ax_v.set_ylabel('速度 (m/s)', fontsize=11)
-            ax_v.set_title('多文件 - 速度曲线叠加对比（水平虚线为各自的V0，垂直点线为各自t1/t2）', fontsize=13, pad=12)
+            ax_v.set_xlabel('Time(s)', fontsize=11)
+            ax_v.set_ylabel('Velocity (m/s)', fontsize=11)
+            ax_v.set_title('Multi-velocity Curves Comparison', fontsize=13, pad=12)
             ax_v.grid(True, alpha=0.3)
             ax_v.legend(loc='upper right', bbox_to_anchor=(1.25, 1)) 
             st.pyplot(fig_v)
@@ -253,9 +253,9 @@ if uploaded_files:
             for file_name, d in plot_data.items():
                 ax_a.plot(d['time_raw'], d['acc'], linewidth=1.5, alpha=0.8, label=f"{file_name}")
                 
-            ax_a.set_xlabel('时间 (s)', fontsize=11)
-            ax_a.set_ylabel('加速度 (m/s²)', fontsize=11)
-            ax_a.set_title('多文件 - 原始加速度曲线叠加对比', fontsize=13, pad=12)
+            ax_a.set_xlabel('Time(s)', fontsize=11)
+            ax_a.set_ylabel('Acceleration(m/s²)', fontsize=11)
+            ax_a.set_title('Multi-acceleration Curves Comparison', fontsize=13, pad=12)
             ax_a.grid(True, alpha=0.3)
             ax_a.legend(loc='upper right', bbox_to_anchor=(1.25, 1))
             st.pyplot(fig_a)
@@ -265,7 +265,7 @@ if uploaded_files:
         st.subheader("📥 第五步：导出汇总报告")
         csv_buffer = summary_df.to_csv(index=False).encode('utf-8-sig')
         st.download_button(
-            label="点击下载带有独立车速的 OLC 结果汇总表 (CSV格式)",
+            label="点击下载带有OLC的结果汇总表 (CSV格式)",
             data=csv_buffer,
             file_name="OLC_Multi_Velocity_Results.csv",
             mime="text/csv"
